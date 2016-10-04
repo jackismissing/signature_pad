@@ -330,7 +330,6 @@ var SignaturePad = (function (document) {
         }
         ctx.closePath();
         ctx.fill();
-        console.log(this.path.length);
     };
 
     SignaturePad.prototype._strokeWidth = function (velocity) {
