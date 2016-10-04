@@ -49,6 +49,9 @@ var SignaturePad = (function (document) {
         this.onEnd = opts.onEnd;
         this.onBegin = opts.onBegin;
 
+        // Store the drawn points into a path variable for further use
+        this.path = [];
+
         this._canvas = canvas;
         this._ctx = canvas.getContext("2d");
         this.clear();
@@ -206,6 +209,7 @@ var SignaturePad = (function (document) {
 
     SignaturePad.prototype._reset = function () {
         this.points = [];
+        this.path = [];
         this._lastVelocity = 0;
         this._lastWidth = (this.minWidth + this.maxWidth) / 2;
         this._isEmpty = true;
@@ -321,6 +325,7 @@ var SignaturePad = (function (document) {
             y += ttt * curve.endPoint.y;
 
             width = startWidth + ttt * widthDelta;
+            this.path.push({ x, y, width });
             this._drawPoint(x, y, width);
         }
         ctx.closePath();
