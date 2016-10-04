@@ -109,6 +109,7 @@ var SignaturePad = (function (document) {
         var ctx = this._ctx,
             canvas = this._canvas;
 
+        this.path = [];
         ctx.fillStyle = this.backgroundColor;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -209,7 +210,6 @@ var SignaturePad = (function (document) {
 
     SignaturePad.prototype._reset = function () {
         this.points = [];
-        this.path = [];
         this._lastVelocity = 0;
         this._lastWidth = (this.minWidth + this.maxWidth) / 2;
         this._isEmpty = true;
@@ -330,6 +330,7 @@ var SignaturePad = (function (document) {
         }
         ctx.closePath();
         ctx.fill();
+        console.log(this.path.length);
     };
 
     SignaturePad.prototype._strokeWidth = function (velocity) {
