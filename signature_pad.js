@@ -110,6 +110,10 @@ var SignaturePad = (function (document) {
             canvas = this._canvas;
 
         this.path = [];
+
+        // Cache canvas pos
+        this._bounds = canvas.getBoundingClientRect();
+
         ctx.fillStyle = this.backgroundColor;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -217,10 +221,9 @@ var SignaturePad = (function (document) {
     };
 
     SignaturePad.prototype._createPoint = function (event) {
-        var rect = this._canvas.getBoundingClientRect();
         return new Point(
-            event.clientX - rect.left,
-            event.clientY - rect.top
+            event.clientX - this._bounds.left,
+            event.clientY - this._bounds.top
         );
     };
 
