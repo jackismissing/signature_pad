@@ -328,7 +328,7 @@ var SignaturePad = (function (document) {
             y += ttt * curve.endPoint.y;
 
             width = startWidth + ttt * widthDelta;
-            this.path.push({ x, y, width });
+            this.path.push({ x: x, y: y, width: width });
             this._drawPoint(x, y, width);
         }
         ctx.closePath();
