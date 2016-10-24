@@ -104,6 +104,11 @@ var SignaturePad = (function (document) {
         this._handleMouseEvents();
         this._handleTouchEvents();
     };
+  
+    SignaturePad.prototype.setWidth = function (width) {
+        this.minWidth = width.min;
+        this.maxWidth = width.max;
+    };
 
     SignaturePad.prototype.clear = function () {
         var ctx = this._ctx,
